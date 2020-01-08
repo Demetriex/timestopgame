@@ -1,5 +1,5 @@
 from data.scripts.timer import Countdown
-from data.load import BulletSprites
+from data.load import BulletSprites, EnemySprite
 
 
 class StageSystem(object):
@@ -14,6 +14,8 @@ class StageSystem(object):
         self.countdown_timer.setup_countdown(3)
 
     def init(self):
+        EnemySprite.empty()
+        BulletSprites.empty()
         self.enemy_count = 5
         self.stage = 1
         self.spawner(self.enemy_count)

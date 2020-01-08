@@ -50,8 +50,6 @@ class Game(State):
             self.persistent.sprite.rect.clamp_ip(SCREEN_RECT)
             PlayerSprite.update(tick)
         else:
-            EnemySprite.empty()
-            BulletSprites.empty()
             self.done = True
 
         self.timestop.update(tick, keys)
