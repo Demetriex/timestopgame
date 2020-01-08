@@ -12,12 +12,15 @@ class StageSystem(object):
         self.countdown_timer = Countdown()
         self.banner_timer.setup_countdown(1)
         self.countdown_timer.setup_countdown(3)
+        self.init()
 
     def init(self):
         EnemySprite.empty()
         BulletSprites.empty()
         self.enemy_count = 5
         self.stage = 1
+        self.banner_timer.reset_timer()
+        self.countdown_timer.reset_timer()
         self.spawner(self.enemy_count)
 
     def update(self, tick, enemies):

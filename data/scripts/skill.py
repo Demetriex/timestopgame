@@ -32,5 +32,8 @@ class Skill(object):
             self.on_cooldown = False
             self.cooldown_timer.reset_timer()
 
-        self.duration_timer.tick_timer(tick)
-        self.cooldown_timer.tick_timer(tick)
+        if self.skill_used:
+            self.duration_timer.tick_timer(tick)
+
+        if self.on_cooldown:
+            self.cooldown_timer.tick_timer(tick)

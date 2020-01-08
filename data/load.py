@@ -19,8 +19,8 @@ SRC_DIR = "resources"
 
 # Directories
 SPRITES_DIR = os.path.join(SRC_DIR, "graphics", "sprites")
-GUI_DIR = os.path.join(SRC_DIR, "graphics", "gui")
 BULLETS_DIR = os.path.join(SRC_DIR, "graphics", "bullets")
+MAP_DIR = os.path.join(SRC_DIR, "graphics", "maps")
 
 
 pg.init()
@@ -49,7 +49,7 @@ SCREEN.blit(loading, loading.get_rect(center=CENTER))
 pg.display.update()
 
 SPRITES = load_spt(SPRITES_DIR)
-GUI = load_gfx(GUI_DIR)
+MAPS = load_gfx(MAP_DIR)
 BULLETS = load_gfx(BULLETS_DIR)
 
 # Spritegroups
@@ -57,8 +57,9 @@ AllSprites = pg.sprite.Group()
 PlayerSprite = pg.sprite.Group()
 EnemySprite = pg.sprite.Group()
 BulletSprites = pg.sprite.Group()
+BackgroundSprites = pg.sprite.Group()
 
 # Player Sprite
 slime = AnimatedSprite(SPRITES["slime"], CENTER, 12)
 PlayerSprite.add(slime)
-Player = Character(slime, BULLETS["blue_bullet"])
+Player = Character(slime, BULLETS["blue_bullet"], BulletSprites)

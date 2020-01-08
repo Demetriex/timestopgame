@@ -5,20 +5,20 @@ from data.scripts.timer import Timer, Countdown
 from data.scripts.state_machine import State
 from data.scripts.stage import StageSystem
 from data.scripts.skill import Skill
+from data.scripts.background import MovingBackground
 from data.load import *
 
 
 class Game(State):
     def __init__(self):
         super().__init__()
-        self.background = GRAY
         self.player_hp = 3
         self.timer = Timer()
+        self.background = MovingBackground(MAPS["dirt"], BackgroundSprites)
         self.countdown_timer = Countdown()
         self.countdown_timer.setup_countdown(3)
         self.timestop = Skill(10, 2, pg.K_SPACE)
         self.stage = StageSystem(self.spawn_enemies)
-        self.stage.init()
         self.playing = True
         self.next = "GAMEOVER"
 
@@ -34,6 +34,7 @@ class Game(State):
         return self.persistent
 
     def update(self, tick, keys, mkeys, mouse_pos):
+
         if not self.stage.countdown_timer.done\
                 or not self.stage.banner_timer.done:
             self.persistent.can_shoot = False
@@ -52,12 +53,14 @@ class Game(State):
         else:
             self.done = True
 
+        if not self.timestop.skill_used:
+            self.background.update()
         self.timestop.update(tick, keys)
         self.stage.update(tick, len(EnemySprite))
         self.check_hp()
 
     def draw(self, surface):
-        surface.fill(self.background)
+        BackgroundSprites.draw(surface)
         PlayerSprite.draw(surface)
         EnemySprite.draw(surface)
         BulletSprites.draw(surface)
