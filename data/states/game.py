@@ -35,8 +35,7 @@ class Game(State):
 
     def update(self, tick, keys, mkeys, mouse_pos):
 
-        if not self.stage.countdown_timer.done\
-                or not self.stage.banner_timer.done:
+        if not self.stage.countdown_timer.done or not self.stage.banner_timer.done:
             self.persistent.can_shoot = False
         else:
             self.persistent.can_shoot = True
@@ -70,49 +69,40 @@ class Game(State):
         self.render_hp(surface)
 
     def hits(self):
-        hits = pg.sprite.groupcollide(EnemySprite, PlayerSprite,
-                                      True, False)
+        hits = pg.sprite.groupcollide(EnemySprite, PlayerSprite, True, False)
         pg.sprite.groupcollide(EnemySprite, BulletSprites, True, True)
 
         self.player_hp = self.player_hp - len(hits)
 
     def spawn_enemies(self, number):
         for x in range(number):
-            monster = random.choice(
-                [SPRITES["redmonster"], SPRITES["slime"]]
-            )
+            monster = random.choice([SPRITES["redmonster"], SPRITES["slime"]])
             rand_num = random.randrange(WIDTH)
             EnemySprite.add(Mobs(monster, (rand_num, -100), 12))
 
     def render_hp(self, surface):
-        hp = SMALL_FONT.render(
-            "HP: " + str(self.player_hp), 0, BLACK
-        )
+        hp = SMALL_FONT.render("HP: " + str(self.player_hp), 0, BLACK)
         surface.blit(hp, hp.get_rect(topleft=TOPLEFT))
 
     def render_countdown_timer(self, surface):
-        if self.stage.countdown_timer.number >= 0\
-                and not self.countdown_timer.done\
-                and self.stage.banner_timer.done:
+        if (
+            self.stage.countdown_timer.number >= 0
+            and not self.countdown_timer.done
+            and self.stage.banner_timer.done
+        ):
 
             text = str(self.stage.countdown_timer.number)
             if text == "0":
                 text = "Start!"
             number = BIG_FONT.render(text, 0, RED)
-            surface.blit(
-                number,
-                number.get_rect(center=CENTER)
-            )
+            surface.blit(number, number.get_rect(center=CENTER))
 
     def render_stage_complete(self, surface):
         if not self.stage.banner_timer.done:
             stage_complete = MEDIUM_FONT.render(
                 "Stage " + str(self.stage.stage), 0, RED
             )
-            surface.blit(
-                stage_complete,
-                stage_complete.get_rect(center=CENTER)
-            )
+            surface.blit(stage_complete, stage_complete.get_rect(center=CENTER))
 
     def render_skill_usage(self, surface):
         if self.timestop.on_cooldown:

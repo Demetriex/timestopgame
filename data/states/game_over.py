@@ -10,9 +10,7 @@ class GameOver(State):
         super().__init__()
         self.background = BLACK
         self.new_game = Button("New Game", MEDIUM_FONT, WHITE, LIGHTBLUE)
-        self.new_game.rect.midbottom = CENTER
         self.quit = Button("Quit", MEDIUM_FONT, WHITE, RED)
-        self.quit.rect.midtop = CENTER
         self.next = "SPLASH"
         self.alpha = 0
         self.rate = 5
@@ -24,8 +22,13 @@ class GameOver(State):
         self.done = False
         return self.persistent
 
+    def set_rect(self):
+        self.quit.rect.midtop = CENTER
+        self.new_game.rect.midbottom = CENTER
+
     def update(self, tick, keys, mkeys, mouse_pos):
-        self.alpha = min(self.alpha+self.rate, 255)
+        self.set_rect()
+        self.alpha = min(self.alpha + self.rate, 255)
         self.background.set_alpha(self.alpha)
         if self.new_game.update(mkeys, mouse_pos):
             self.done = True

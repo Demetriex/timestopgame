@@ -1,12 +1,11 @@
-import pygame as pg
 import sys
+import pygame as pg
 from data.defaults import *
 from data.load import *
 from data.scripts.state_machine import StateMachine
 
 
 class Control(object):
-
     def __init__(self):
         self.screen = SCREEN
         self.clock = pg.time.Clock()
@@ -22,12 +21,7 @@ class Control(object):
             self.state_machine.state.draw(self.screen)
 
     def update(self):
-        self.state_machine.update(
-            self.tick,
-            self.keys,
-            self.mkeys,
-            self.mouse_pos
-        )
+        self.state_machine.update(self.tick, self.keys, self.mkeys, self.mouse_pos)
 
     def get_events(self):
         for event in pg.event.get():

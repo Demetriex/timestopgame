@@ -14,7 +14,7 @@ class AnimatedSprite(pg.sprite.Sprite):
 
     def update(self, now):
         self.timer += now
-        if self.timer > 1000/self.fps:
+        if self.timer > 1000 / self.fps:
             self.index += 1
             if self.index >= len(self.images):
                 self.index = 0
