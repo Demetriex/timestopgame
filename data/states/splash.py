@@ -5,16 +5,17 @@ from data.load import *
 
 
 class Splash(State):
+    _alpha = 0
+    _rate = 10
+
     def __init__(self):
         super().__init__()
         self.background = WHITE
         self.ticks = 0
-        self.count = 3
         self.splash = BIG_FONT.render(TITLE, 0, BLACK)
         self.any_key = SMALL_FONT.render("Press any key...", 0, BLACK)
         self.next = "GAME"
-        self.alpha = 0
-        self.rate = 10
+
         self.timer = Countdown()
         self.timer.setup_countdown(1)
 
@@ -33,10 +34,10 @@ class Splash(State):
     def update(self, tick, keys, mkeys, mouse_pos):
         self.set_rect()
         self.ticks += tick
-        if not 0 <= self.alpha <= 255:
-            self.rate = self.rate * -1
-        self.alpha += self.rate
-        self.any_key.set_alpha(self.alpha)
+        if not 0 <= self._alpha <= 255:
+            self._rate = self._rate * -1
+        self._alpha += self._rate
+        self.any_key.set_alpha(self._alpha)
         if not self.timer.done:
             self.timer.tick_timer(tick)
         if (any(keys) or any(mkeys)) and self.timer.done:

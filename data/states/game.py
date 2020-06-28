@@ -81,7 +81,7 @@ class Game(State):
             EnemySprite.add(Mobs(monster, (rand_num, -100), 12))
 
     def render_hp(self, surface):
-        hp = SMALL_FONT.render("HP: " + str(self.player_hp), 0, BLACK)
+        hp = SMALL_FONT.render(f"HP: {str(self.player_hp)}", 0, BLACK)
         surface.blit(hp, hp.get_rect(topleft=TOPLEFT))
 
     def render_countdown_timer(self, surface):
