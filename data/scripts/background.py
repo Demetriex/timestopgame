@@ -1,4 +1,5 @@
 import pygame as pg
+
 from data.load import SCREEN_RECT, TOPLEFT
 
 

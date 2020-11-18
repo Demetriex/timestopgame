@@ -1,7 +1,8 @@
 import json
 import os
-import pygame as pg
 from itertools import chain
+
+import pygame as pg
 
 
 def load_data(basedir, directories):

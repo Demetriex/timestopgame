@@ -1,4 +1,5 @@
 import pygame as pg
+
 from data.scripts.bullet import Bullet
 from data.scripts.timer import Timer
 

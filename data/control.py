@@ -1,5 +1,7 @@
 import sys
+
 import pygame as pg
+
 from data.defaults import *
 from data.load import *
 from data.scripts.state_machine import StateMachine
