@@ -1,8 +1,10 @@
 import sys
+
 import pygame as pg
-from data.scripts.state_machine import State
-from data.scripts.button import Button
+
 from data.load import *
+from data.scripts.button import Button
+from data.scripts.state_machine import State
 
 
 class GameOver(State):

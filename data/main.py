@@ -1,6 +1,6 @@
 from data.control import Control
-from data.states import Game, Splash, GameOver
 from data.load import Player
+from data.states import Game, GameOver, Splash
 
 
 def main():

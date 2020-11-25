@@ -1,4 +1,5 @@
 import random
+
 from data.scripts.animated import AnimatedSprite
 
 

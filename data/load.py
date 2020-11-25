@@ -1,9 +1,11 @@
-import pygame as pg
 import random
-from data.tools import *
+
+import pygame as pg
+
 from data.defaults import *
 from data.scripts.animated import AnimatedSprite
 from data.scripts.character import Character
+from data.tools import *
 
 TITLE = "Timestop Game"
 

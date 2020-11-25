@@ -1,7 +1,8 @@
 import pygame as pg
+
+from data.load import *
 from data.scripts.state_machine import State
 from data.scripts.timer import Countdown
-from data.load import *
 
 
 class Splash(State):

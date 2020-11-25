@@ -1,5 +1,5 @@
-from data.scripts.timer import Countdown
 from data.load import BulletSprites, EnemySprite
+from data.scripts.timer import Countdown
 
 
 class StageSystem(object):

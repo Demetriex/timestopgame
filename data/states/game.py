@@ -1,12 +1,14 @@
 import random
+
 import pygame as pg
-from data.scripts.mobs import Mobs
-from data.scripts.timer import Timer, Countdown
-from data.scripts.state_machine import State
-from data.scripts.stage import StageSystem
-from data.scripts.skill import Skill
-from data.scripts.background import MovingBackground
+
 from data.load import *
+from data.scripts.background import MovingBackground
+from data.scripts.mobs import Mobs
+from data.scripts.skill import Skill
+from data.scripts.stage import StageSystem
+from data.scripts.state_machine import State
+from data.scripts.timer import Countdown, Timer
 
 
 class Game(State):
